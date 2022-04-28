@@ -1,0 +1,77 @@
+# SwiftLint:
+# https://github.com/realm/SwiftLint
+#
+# Built-in Rules:
+# https://github.com/realm/SwiftLint/blob/master/Rules.md
+
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - weak_delegate # NOTE: Be sure to test your delegates if they indeed don't create a retain cycle.
+  - empty_enum_arguments
+  - private_action
+  - private_outlet
+  - multiple_closures_with_trailing_closure
+  - fatal_error
+
+opt_in_rules: # some rules are only opt-in
+  - closure_spacing
+  - implicit_return
+  - literal_expression_end_indentation
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - override_in_extension
+  - force_unwrapping
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - R.generated.swift
+  - .build
+  - AspyreTests
+  - AspyreUITests
+  # Exclude here the R.file
+
+line_length: 200
+
+type_body_length:
+  - 450 # warning
+  - 500 # error
+
+identifier_name:
+  min_length:
+    warning: 1
+    error: 1
+  max_length:
+    warning: 50
+    error: 60
+  excluded:
+    - url
+
+force_unwrapping:
+  severity: error
+
+custom_rules:
+  comment_spacing:
+    name: "Comment Spacing"
+    regex: '(\/\/[^\s\/*]|[^\s\/*]\/\/)'
+    match_kinds:
+      - comment
+      - doccomment
+    message: "Single-line comments should have at least one whitespace character before and after the '//' or '///'."
+    severity: warning
+
+  fatal_error:
+    name: "Use of `fatalError`"
+    regex: 'fatalError'
+    message: "Prefer using 'assertionFailure' and failing gracefully instead of `fatalError`. `assertionFailure` will not cause a crash in production builds, but `fatalError` will. If you absolutely must use `fatalError`, silence this warning by adding `// swiftlint:disable:next fatal_error` above this line."
+    match_kinds:
+      - identifier
+    severity: warning
+
+  explicit_comparison_to_true:
+    name: "Explicit comparison to `true`"
+    regex: '(==\s*true|true\s*==|!=\s*true|true\s*!=)'
+    message: "Please don't explicitly compare to `true`. If you need to compare an optional `Bool`, provide a default value instead, like `?? true` or `?? false`."
+    severity: warning
+

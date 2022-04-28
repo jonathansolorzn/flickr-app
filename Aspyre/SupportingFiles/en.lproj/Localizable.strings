@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Aspyre
+*/
+
+"appName" = "Alias Challenge";
+
+// MARK: - Gallery
+
+"findPhotos" = "Find Flickr photos by searching names in the search bar below";
+"search" = "Search a name";
+"emptyState" = "Oops, loos like there's no data...";
+
+// MARK: - Detail
+"owener" = "Owener:";
+"takenAt" = "Taken at:";
+"openInBrowser" = "Open in browser";
