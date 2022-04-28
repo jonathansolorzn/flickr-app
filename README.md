@@ -31,7 +31,7 @@ App following Service-oriented Architecture and MVVM Pattern.
 ### 🗂 Folder Structure
 
 ```swift
-Aspyre
+Flickr
 |-- Services
 |   -- Models
 |-- SupportingFiles
